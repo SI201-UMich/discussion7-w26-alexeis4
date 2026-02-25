@@ -91,7 +91,16 @@ def calculate_avg_price_by_neighbourhood_group_and_room(listings):
 ##### TASK 3: CSV WRITER
 ###############################################################################
 def write_summary_csv(out_filename, avg_prices):
+    with open(out_filename, 'w', newline = '') as fout:
+        writer = csv.writer(fout)
+        writer.writerow(["neighbourhood_group", "room_type", "average_price"])
+
+
+        for key, value in avg_prices.items():
+            writer.writerow([key[0], key[1], value])
     
+    return 
+
 
     
 

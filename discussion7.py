@@ -83,9 +83,6 @@ def calculate_avg_price_by_neighbourhood_group_and_room(listings):
         dict mapping (neighbourhood_group, room_type) -> average_price (float)
         e.g. { ('Downtown', 'Entire home/apt'): 123.45, ... }
     """
-    pass
-
-
 
 ###############################################################################
 ##### TASK 3: CSV WRITER
@@ -119,7 +116,6 @@ def write_summary_csv(out_filename, avg_prices):
         None
             Writes a CSV file with header: neighbourhood_group, room_type, average_price
     """
-    pass
 
 ###############################################################################
 ##### UNIT TESTS (Do not modify the code below!)

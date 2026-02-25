@@ -41,7 +41,6 @@ def load_listings(f):
                 listing[column] = row[i]
             all_listings.append(listing)
         return all_listings
-    pass
 
 ###############################################################################
 ##### TASK 2: CALCULATION FUNCTION (single calculation)

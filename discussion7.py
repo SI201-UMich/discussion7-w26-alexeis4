@@ -31,12 +31,44 @@ def load_listings(f):
     full_path = os.path.join(base_path, f)
 
     # TODO: Read the CSV using csv.reader and convert it to a list a dictionaries
+    with open(full_path, 'r') as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        all_listings = []
+        for row in reader:
+            listing = {}
+            for i, column in enumerate(header):
+                listing[column] = row[i]
+            all_listings.append(listing)
+        return all_listings
     pass
 
 ###############################################################################
 ##### TASK 2: CALCULATION FUNCTION (single calculation)
 ###############################################################################
 def calculate_avg_price_by_neighbourhood_group_and_room(listings):
+    price_sum = {}
+    price_count = {}
+    for listing in listings:
+        neighborhood_group = listing["neighbourhood_group"]
+        room_type = listing["room_type"]
+        price = float(listing["price"])
+
+        listing_key = (neighborhood_group, room_type)
+
+        if listing_key in price_sum:
+            price_sum[listing_key] += price
+            price_count[listing_key] += 1
+        else:
+            price_sum[listing_key] = price
+            price_count[listing_key] = 1
+    
+    avg_price = {}
+    for key in price_sum:
+        avg_price[key] = price_sum[key] / price_count[key]
+    return avg_price
+
+
     """
     Calculate the average nightly price for each (neighbourhood_group, room_type) pair.
 
@@ -59,6 +91,11 @@ def calculate_avg_price_by_neighbourhood_group_and_room(listings):
 ##### TASK 3: CSV WRITER
 ###############################################################################
 def write_summary_csv(out_filename, avg_prices):
+    
+
+    
+
+
     """
     Write the summary statistics to a CSV file.
 
